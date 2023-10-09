@@ -8,14 +8,30 @@
       rel="stylesheet"
       href="https://pyscript.net/releases/2023.05.1/pyscript.css"
     />
-    <link rel="stylesheet" href="./styles/styles.css" />
+    <!--link rel="stylesheet" href="./styles/styles.css" /-->
     <script
       defer
       src="https://pyscript.net/releases/2023.05.1/pyscript.js"
     ></script>
   </head>
   <body>
+    <py-config src="./pyscript.toml"></py-config>
+    <!--Create a ballback to the pyrepl from a button-->
+    
+    <py-script>
+      from js import document
+      from pyodide import create_proxy
+
+      def runPuthon():
+        print("you clicked me")
+      
+      function_proxy = create_proxy(runPython)
+
+      document.getElementById("button").addEventListener("click", function_proxy)
+    </py-script>
+    
     <py-repl id="repl"></py-repl>
+    <py-repl id="repl">hi</py-repl>
     <div class="serverMessage">
       <!--Text box and button for messages to the server-->
       <pre id="messages" style="height: 400px; overflow: scroll"></pre>
@@ -68,5 +84,7 @@
         })();
       </script>
     </div>
+    <py-repl id="repl">hi</py-repl>
+    <button type="button" id="button">run Python</button>
   </body>
 </html>

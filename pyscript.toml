@@ -3,3 +3,13 @@ docked = true
 
 [[fetch]]
 files = ['widgets.py']
+
+packages = [
+    "pyodide-http",
+    "pyodide",
+    "requests",
+    "matplotlib",
+    "pandas",
+    "bokeh",
+    "xyzservices"
+]
