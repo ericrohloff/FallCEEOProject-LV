@@ -1,5 +1,7 @@
 terminal = true
 docked = true
 
+packages = ["matplotlib"]
+
 [[fetch]]
 files = ['widgets.py']

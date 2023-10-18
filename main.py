@@ -7,13 +7,16 @@ from widgets import UIElement
 buttons = []
 
 # temp
+
+
 @when("click", selector=".generator-button")
 def generateButton(evt):
     # calculate mouse position in the front panel
-    fpBounds = js.document.querySelector('[data-page="front-panel"]').getBoundingClientRect()
+    fpBounds = js.document.querySelector(
+        '[data-page="front-panel"]').getBoundingClientRect()
 
     initX = evt.clientX-fpBounds.left
-    initY = evt.clientY-fpBounds.top 
+    initY = evt.clientY-fpBounds.top
 
     newElem = UIElement(initX, initY)
     buttons.append(newElem)

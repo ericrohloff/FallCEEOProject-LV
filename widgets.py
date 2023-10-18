@@ -2,6 +2,7 @@ import js
 from pyodide.ffi import create_proxy
 from pyscript import when
 
+
 class UIElement:
     def __init__(s, initX, initY):
         s.name = None
@@ -21,14 +22,10 @@ class UIElement:
         # save drag callback proxies so they can be added and removed
         s._dragElemProxy = create_proxy(s._dragElem)
 
-
         s.element.addEventListener("mousedown", create_proxy(s._startDrag))
         js.document.addEventListener("mouseup", create_proxy(s._stopDrag))
 
-        
-
-    
-    def _dragElem(s,evt):
+    def _dragElem(s, evt):
         evt.movementX
         elemStyles = js.window.getComputedStyle(s.element)
 
@@ -36,18 +33,17 @@ class UIElement:
         if not "px" in elemStyles.left:
             print("_dragElem: no px in left style")
 
-        ####### may need to change to regex if more robust parsing needed
+        # may need to change to regex if more robust parsing needed
         leftStart = int(elemStyles.left.rstrip("px"))
         topStart = int(elemStyles.top.rstrip("px"))
-
 
         s.element.style.left = f"{evt.movementX + leftStart}px"
         s.element.style.top = f"{evt.movementY + topStart}px"
 
-    def _startDrag(s,evt):
+    def _startDrag(s, evt):
         s.element.addEventListener("mousemove", s._dragElemProxy)
-    
-    def _stopDrag(s,evt):
+
+    def _stopDrag(s, evt):
         s.element.removeEventListener("mousemove", s._dragElemProxy)
 
     elemHtml = '''
