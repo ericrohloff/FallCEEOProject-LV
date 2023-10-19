@@ -17,16 +17,18 @@
     <body>
         <py-config src="./pyscript.toml"></py-config>
         <py-script src="./main.py"></py-script>
+        <py-script src="./widgets.py"></py-script>
+        <py-script src="./plotter.py"></py-script>
         <py-script src="./matplot_test.py"></py-script>
+
         <div class="headBar">
-            <!-- changed this -->
-            <div data-page-target="front-panel" class="headBar__tab frontPanel">
+            <div
+                data-page-target="front-panel"
+                class="headBar__tab frontPanel selected"
+            >
                 Front Panel
             </div>
-            <div
-                data-page-target="code-panel"
-                class="headBar__tab codePanel selected"
-            >
+            <div data-page-target="code-panel" class="headBar__tab codePanel">
                 Code Panel
             </div>
             <div
@@ -37,31 +39,61 @@
             </div>
         </div>
         <div id="pageContent">
-            <div data-page="code-panel" class="pageContent__content shown">
-                <py-repl output="replOutput"></py-repl>
+            <div data-page="code-panel" class="pageContent__content">
+                <py-repl></py-repl>
             </div>
-            <div data-page="front-panel" class="pageContent__content">
-                <div class="generator-button">generate button</div>
-                <div class="matplotter" id="test">matplotlib</div>
+            <div data-page="front-panel" class="pageContent__content shown">
+                <div class="widget-adder">
+                    <div class="widget-adder__button">+ Add Widget</div>
+                    <div class="widget-adder__menu"></div>
+                </div>
+                <!-- <div class="UIElement">
+          <i class="UIElement__caret"
+            ><div class="UIElement__menu">
+              <div class="UIElement__menu__elem" data-function="delete">
+                Delete Widget
+              </div>
+              <div class="UIElement__menu__elem">Properties</div>
+            </div></i
+          >
+          <div class="UIbutton"></div>
+          <div class="UIElement__id">Button 00</div>
+        </div> -->
+                <div class="matplotter" id="test">
+                    <div class="matplotter__title" id="title">
+                        <input type="text" placeholder="Enter Title" />
+                    </div>
+                    <div class="matplotter__points" id="x">
+                        <input type="text" placeholder="Enter Points" />
+                    </div>
+                    <div class="matplotter__points" id="y">
+                        <input type="text" placeholder="Enter Points" />
+                    </div>
+                    <div class="matplotter__button">
+                        <button class="generate" id="init">Add Point</button>
+                    </div>
+                    <div class="matplotter__button">
+                        <button class="generate" id="generate">Plot</button>
+                    </div>
+                </div>
                 <div class="UIElement">
-                    <input
-                        class="UIElement__name"
-                        type="text"
-                        placeholder="Enter element name"
-                    />
                     <i class="UIElement__caret"
                         ><div class="UIElement__menu">
-                            <div class="UIElement__menu__elem">
+                            <div
+                                class="UIElement__menu__elem"
+                                data-function="delete"
+                            >
                                 Delete Widget
                             </div>
+                            <div class="UIElement__menu__elem">Properties</div>
                         </div></i
                     >
-
-                    <div class="UIbutton"></div>
+                    <div class="UIled"></div>
+                    <div class="UIElement__id">LED 00</div>
                 </div>
             </div>
             <div data-page="serial-panel" class="pageContent__content">
-                <py-repl output="replOutput">import serial</py-repl>
+                <py-repl>import serial</py-repl>
             </div>
         </div>
     </body>

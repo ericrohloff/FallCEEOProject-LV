@@ -1,42 +1,64 @@
-import js
-from js import document
-
-# Importing numpy and matplotlib
-import numpy as np
 import matplotlib.pyplot as plt
+import js
+from js import document, console
+from widgets import UIElement
+from pyodide.ffi import create_proxy
+from pyodide.ffi.wrappers import add_event_listener
+from pyscript import display
 
-# Create an array
-arr = np.array([1, 2, 3, 4, 5])
 
-# Perform some operations
-mean = np.mean(arr)
-sum_values = np.sum(arr)
+class InteractiveGraph:
+    def __init__(self):
+        # Create a figure and axis
+        self.fig, self.ax = plt.subplots()
+        self.points = []
+        self.fig.set_size_inches(3, 2)
 
-# Generate a simple Matplotlib plot
-plt.plot(arr)
-plt.xlabel('X-axis')
-plt.ylabel('Y-axis')
-plt.title('Sample Plot')
+    def set_limits(self, xlim, ylim):
+        # Set axis limits
+        self.ax.set_xlim(xlim)
+        self.ax.set_ylim(ylim)
 
-# Convert the Matplotlib plot to an image format
-fig = plt.gcf()
-fig.canvas.draw()
-img_data = fig.canvas.tostring_rgb()
-img_width, img_height = fig.canvas.get_width_height()
+    def set_labels(self, xlabel, ylabel):
+        # Set axis labels
+        self.ax.set_xlabel(xlabel)
+        self.ax.set_ylabel(ylabel)
 
-# Encode the image data as base64 using JavaScript's btoa() function
-js_code = f"btoa('{img_data.decode('latin-1')}')"
-img_base64 = js.eval(js_code)
+    def set_title(self, title):
+        # Set the title
+        self.ax.set_title(title)
 
-# Create an HTML <img> element and set its src attribute to display the image
-img_element = document.createElement("img")
-img_element.src = f"data:image/png;base64,{img_base64}"
+    def add_point(self, x, y):
+        # Add a point to the graph
+        self.points.append((x, y))
 
-# Append the <img> element to the "test" <div>
-x = document.getElementById("test")
-x.appendChild(img_element)
+    def plot_points(self):
+        # Plot the points on the graph
+        if self.points:
+            x, y = zip(*self.points)
+            self.ax.plot(x, y, 'o', label='Points')
 
-# Display the results in the HTML
-x.textContent = "Array: " + str(arr)
-x.textContent += "\nMean: " + str(mean)
-x.textContent += "\nSum: " + str(sum_values)
+    def show_graph(self):
+        # Show the graph
+        self.plot_points()
+        display(self.fig, target='test')
+
+
+## TEST CODE ##
+
+# from matplot_test import InteractiveGraph
+
+# graph = InteractiveGraph()
+# graph.set_limits((0, 10), (0, 10))
+# graph.set_labels('X-axis', 'Y-axis')
+# graph.set_title('Empty Graph')
+
+# # Add points
+# graph.add_point(3, 5)
+# graph.add_point(6, 8)
+
+# # Change the title
+# graph.set_title('Graph with Points')
+
+# # Show the graph with points
+# graph.show_graph()

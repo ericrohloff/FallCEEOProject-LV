@@ -109,17 +109,35 @@ body {
     }
 }
 
+
 .UIbutton {
     background-color: rgb(168, 56, 56);
     width: 40px;
     height: 40px;
     border-radius: 50%;
     border: solid 1px black;
+
+    margin: 5px 10px 0px 10px;
+    
     &:hover {
         background-color: rgb(155, 52, 52);
     }
     &:active {
         background-color: rgb(118, 31, 31);
+    }
+}
+
+.UIled {
+    background-color: rgba(255, 255, 255, 0);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: solid 1px black;
+
+    margin: 5px 10px 0px 10px;
+
+    &.on {
+        background-color: rgb(57, 215, 52)
     }
 }
 
@@ -153,32 +171,47 @@ body {
         margin: 3px;
     }
 
+    &__id {
+        font-size: 1em;
+        margin: 5px;
+        background-color: rgba(0, 0, 0, 0);
+        text-align: center;
+    }
+
     &__caret {
         position: absolute;
         width: 0;
         height: 0;
-        top: 10px;
-        right: 10px;
+        top: 6px;
+        right: 6px;
         border-top: 4px solid;
         border-right: 4px solid transparent;
         border-left: 4px solid transparent;
         visibility: hidden;
+        cursor: pointer;
     }
 
     &__menu {
-        background-color: white;
+        background-color: rgba(255, 255, 255, 0.558);
         position: absolute;
+        top: 5px;
         min-height: 10px;
-        min-width: 50px;
-        // visibility: hidden;
+        display: inline-flex;
+        flex-direction: column;
+        visibility: hidden;
+
+        &.shown {
+            visibility: visible;
+        }
         
 
         &__elem {
             font-family: Arial, Helvetica, sans-serif;
             font-size: 0.5em;
-            background-color: white;
-            width: 100%;
-            padding: 3px;
+            background-color: rgba(255, 255, 255, 0.558);
+            padding: 5px;
+            display: inline-block;
+            white-space: nowrap;
 
             &:hover {
                 background-color: rgb(208, 208, 208);
@@ -188,6 +221,7 @@ body {
     }
 }
 
+// temp
 .generator-button {
     position:absolute;
     padding:10px;
@@ -203,7 +237,55 @@ body {
     }
 }
 
+.widget-adder {
+    position:absolute;
+    top:0;
+    right:0;
+    
 
+    &__button {
+        position:relative;
+        padding:10px;
+        display: inline-block;
+        top:0;
+        right: 0;
+        background-color: rgb(159, 159, 159);
+        cursor: pointer;
+        &:hover {
+            background-color: rgb(123, 123, 123);
+        }
+        &:active {
+            background-color: rgb(96, 96, 96);
+        }   
+    }
 
+    &__menu {
+        position: absolute;
+        display: none;
+        min-width: 200px;
+        min-height: 100px;
+        background-color: rgba(234, 234, 234, 0.668);
+        top:100%;
+        right:0;
 
+        &.shown {
+            display: flex;
+        }
 
+        &__elem {
+            padding: 5px;
+            margin: 3px;
+            background-color: rgba(182, 182, 182, 0.668);
+
+            &:hover {
+                background-color: rgba(137, 137, 137, 0.668);
+                cursor: pointer;
+            }
+            &:active {
+                background-color: rgb(100, 100, 100);
+            }
+        }
+
+        
+    }
+}

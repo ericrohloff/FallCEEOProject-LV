@@ -1,184 +1,503 @@
 body {
-  margin: 0;
-  padding: 0;
-  background-color: rgb(170, 170, 170);
+    margin: 0;
+    padding: 0;
+    background-color: rgb(170, 170, 170);
 }
-
 .headBar {
-  background-color: rgb(80, 80, 80);
-  width: 100%;
-  height: 40px;
-  display: flex;
+    background-color: rgb(80, 80, 80);
+    width: 100%;
+    height: 40px;
+    display: flex;
 }
 .headBar__tab {
-  display: inline-flex;
-  width: 10%;
-  padding: 4px 8px 4px 8px;
-  box-sizing: border-box;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
+    display: inline-flex;
+    width: 10%;
+    padding: 4px 8px 4px 8px;
+    box-sizing: border-box;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
 }
 .headBar__tab.frontPanel {
-  background-color: rgb(91, 191, 82);
+    background-color: rgb(91, 191, 82);
 }
 .headBar__tab.frontPanel:hover {
-  background-color: rgb(63, 154, 55);
-  cursor: pointer;
+    background-color: rgb(63, 154, 55);
+    cursor: pointer;
 }
 .headBar__tab.frontPanel:active {
-  background-color: rgb(39, 121, 32);
+    background-color: rgb(39, 121, 32);
 }
 .headBar__tab.codePanel {
-  background-color: rgb(191, 82, 82);
+    background-color: rgb(191, 82, 82);
 }
 .headBar__tab.codePanel:hover {
-  background-color: rgb(168, 58, 58);
-  cursor: pointer;
+    background-color: rgb(168, 58, 58);
+    cursor: pointer;
 }
 .headBar__tab.codePanel:active {
-  background-color: rgb(119, 30, 30);
+    background-color: rgb(119, 30, 30);
 }
 .headBar__tab.serialPanel {
-  background-color: rgb(82, 89, 191);
+    background-color: rgb(82, 89, 191);
 }
 .headBar__tab.serialPanel:hover {
-  background-color: rgb(58, 72, 159);
-  cursor: pointer;
+    background-color: rgb(58, 72, 159);
+    cursor: pointer;
 }
 .headBar__tab.serialPanel:active {
-  background-color: rgb(49, 43, 136);
+    background-color: rgb(49, 43, 136);
 }
 .headBar__tab.selected {
-  border: 1px solid black;
+    border: 1px solid black;
 }
 .headBar__panelToggle {
-  display: inline-flex;
-  padding: 4px 8px 4px 8px;
-  box-sizing: border-box;
-  height: 100%;
-  width: 10%;
-  align-items: center;
-  justify-content: center;
+    display: inline-flex;
+    padding: 4px 8px 4px 8px;
+    box-sizing: border-box;
+    height: 100%;
+    width: 10%;
+    align-items: center;
+    justify-content: center;
 }
 .headBar__panelToggle.front {
-  background-color: rgb(91, 191, 82);
+    background-color: rgb(91, 191, 82);
 }
 .headBar__panelToggle.front:hover {
-  background-color: rgb(63, 154, 55);
-  cursor: pointer;
+    background-color: rgb(63, 154, 55);
+    cursor: pointer;
 }
 .headBar__panelToggle.front:active {
-  background-color: rgb(39, 121, 32);
+    background-color: rgb(39, 121, 32);
 }
 .headBar__panelToggle.back {
-  background-color: rgb(191, 82, 82);
+    background-color: rgb(191, 82, 82);
 }
 .headBar__panelToggle.back:hover {
-  background-color: rgb(168, 58, 58);
-  cursor: pointer;
+    background-color: rgb(168, 58, 58);
+    cursor: pointer;
 }
 .headBar__panelToggle.back:active {
-  background-color: rgb(119, 30, 30);
+    background-color: rgb(119, 30, 30);
 }
 
 .pageContent {
-  position: relative;
-  width: 100%;
+    position: relative;
+    width: 100%;
 }
 .pageContent__content {
-  position: relative;
-  box-sizing: border-box;
-  padding: 10px;
-  width: 100%;
-  display: none;
+    position: relative;
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
+    display: none;
 }
 .pageContent__content.shown {
-  display: block;
+    display: block;
 }
 
 .UIbutton {
-  background-color: rgb(168, 56, 56);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: solid 1px black;
+    background-color: rgb(168, 56, 56);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: solid 1px black;
 }
 .UIbutton:hover {
-  background-color: rgb(155, 52, 52);
+    background-color: rgb(155, 52, 52);
 }
 .UIbutton:active {
-  background-color: rgb(118, 31, 31);
+    background-color: rgb(118, 31, 31);
 }
 
 .UIElement {
-  position: absolute;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 40px;
-  background-color: rgba(0, 0, 0, 0);
-  border-radius: 10px;
-  outline: 0;
-  min-width: 40px;
-  min-height: 40px;
-  padding: 5px;
+    position: absolute;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 40px;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 10px;
+    outline: 0;
+    min-width: 40px;
+    min-height: 40px;
+    padding: 5px;
 }
 .UIElement:hover {
-  outline: 1px solid rgba(0, 0, 0, 0.428);
+    outline: 1px solid rgba(0, 0, 0, 0.428);
 }
 .UIElement:hover .UIElement__caret {
-  visibility: visible;
-  cursor: pointer;
+    visibility: visible;
+    cursor: pointer;
 }
 .UIElement__name {
-  border: none;
-  background-color: rgba(0, 0, 0, 0);
-  font-size: 1em;
-  height: 20px;
-  margin: 3px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 1em;
+    height: 20px;
+    margin: 3px;
 }
 .UIElement__caret {
-  position: absolute;
-  width: 0;
-  height: 0;
-  top: 10px;
-  right: 10px;
-  border-top: 4px solid;
-  border-right: 4px solid transparent;
-  border-left: 4px solid transparent;
-  visibility: hidden;
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 10px;
+    right: 10px;
+    border-top: 4px solid;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+    visibility: hidden;
 }
 .UIElement__menu {
-  background-color: white;
-  position: absolute;
-  min-height: 10px;
-  min-width: 50px;
+    background-color: white;
+    position: absolute;
+    min-height: 10px;
+    min-width: 50px;
 }
 .UIElement__menu__elem {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 0.5em;
-  background-color: white;
-  width: 100%;
-  padding: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.5em;
+    background-color: white;
+    width: 100%;
+    padding: 3px;
 }
 .UIElement__menu__elem:hover {
-  background-color: rgb(208, 208, 208);
-  cursor: pointer;
+    background-color: rgb(208, 208, 208);
+    cursor: pointer;
 }
 
 .generator-button {
-  position: absolute;
-  padding: 10px;
-  top: 0;
-  right: 0;
-  background-color: rgb(159, 159, 159);
-  cursor: pointer;
+    position: absolute;
+    padding: 10px;
+    top: 0;
+    right: 0;
+    background-color: rgb(159, 159, 159);
+    cursor: pointer;
 }
 .generator-button:hover {
-  background-color: rgb(123, 123, 123);
+    background-color: rgb(123, 123, 123);
 }
 .generator-button:active {
-  background-color: rgb(96, 96, 96);
-}/*# sourceMappingURL=styles.css.map */
+    background-color: rgb(96, 96, 96);
+} /*# sourceMappingURL=styles.css.map */
+
+.matplotter {
+    position: fixed;
+    top: 80px;
+    right: 300px;
+    height: 450px;
+    width: 300px;
+    background-color: #3498db; /* Modern blue color */
+    border-radius: 10px;
+    border: 2px solid #2980b9; /* Slightly lighter blue for border */
+    padding: 10px;
+    color: #ffffff; /* White text on the blue background */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+/* Style for the Matplotter title */
+.matplotter__title input {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333; /* Darker text color */
+    margin-bottom: 10px;
+    border: none;
+    background: transparent;
+    width: 100%;
+    outline: none; /* Remove the input outline */
+}
+
+/* Style for the Matplotter points */
+.matplotter__points textarea {
+    font-size: 16px;
+    color: #333; /* Darker text color */
+    border: none;
+    background: transparent;
+    width: 100%;
+    resize: vertical;
+    outline: none; /* Remove the textarea outline */
+}
+
+/* Hover effect for better interactivity */
+.matplotter:hover {
+    background-color: #2980b9; /* Slightly darker blue on hover */
+}
+
+/* Style for the Matplotter button */
+.matplotter__button {
+    text-align: center; /* Center the button */
+    margin-top: 15px; /* Add some space above the button */
+}
+
+.matplotter__button__button {
+    padding: 10px 20px; /* Add some padding to the button */
+    font-size: 18px;
+    background-color: #27ae60; /* Green button color */
+    color: #ffffff; /* White text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.matplotter__button__button:hover {
+    background-color: #219d54; /* Darker green on hover */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(170, 170, 170);
+}
+
+.headBar {
+    background-color: rgb(80, 80, 80);
+    width: 100%;
+    height: 40px;
+    display: flex;
+}
+.headBar__tab {
+    display: inline-flex;
+    width: 10%;
+    padding: 4px 8px 4px 8px;
+    box-sizing: border-box;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.headBar__tab.frontPanel {
+    background-color: rgb(91, 191, 82);
+}
+.headBar__tab.frontPanel:hover {
+    background-color: rgb(63, 154, 55);
+    cursor: pointer;
+}
+.headBar__tab.frontPanel:active {
+    background-color: rgb(39, 121, 32);
+}
+.headBar__tab.codePanel {
+    background-color: rgb(191, 82, 82);
+}
+.headBar__tab.codePanel:hover {
+    background-color: rgb(168, 58, 58);
+    cursor: pointer;
+}
+.headBar__tab.codePanel:active {
+    background-color: rgb(119, 30, 30);
+}
+.headBar__tab.serialPanel {
+    background-color: rgb(82, 89, 191);
+}
+.headBar__tab.serialPanel:hover {
+    background-color: rgb(58, 72, 159);
+    cursor: pointer;
+}
+.headBar__tab.serialPanel:active {
+    background-color: rgb(49, 43, 136);
+}
+.headBar__tab.selected {
+    border: 1px solid black;
+}
+.headBar__panelToggle {
+    display: inline-flex;
+    padding: 4px 8px 4px 8px;
+    box-sizing: border-box;
+    height: 100%;
+    width: 10%;
+    align-items: center;
+    justify-content: center;
+}
+.headBar__panelToggle.front {
+    background-color: rgb(91, 191, 82);
+}
+.headBar__panelToggle.front:hover {
+    background-color: rgb(63, 154, 55);
+    cursor: pointer;
+}
+.headBar__panelToggle.front:active {
+    background-color: rgb(39, 121, 32);
+}
+.headBar__panelToggle.back {
+    background-color: rgb(191, 82, 82);
+}
+.headBar__panelToggle.back:hover {
+    background-color: rgb(168, 58, 58);
+    cursor: pointer;
+}
+.headBar__panelToggle.back:active {
+    background-color: rgb(119, 30, 30);
+}
+
+.pageContent {
+    position: relative;
+    width: 100%;
+}
+.pageContent__content {
+    position: relative;
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
+    display: none;
+}
+.pageContent__content.shown {
+    display: block;
+}
+
+.UIbutton {
+    background-color: rgb(168, 56, 56);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: solid 1px black;
+    margin: 5px 10px 0px 10px;
+}
+.UIbutton:hover {
+    background-color: rgb(155, 52, 52);
+}
+.UIbutton:active {
+    background-color: rgb(118, 31, 31);
+}
+
+.UIled {
+    background-color: rgba(255, 255, 255, 0);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: solid 1px black;
+    margin: 5px 10px 0px 10px;
+}
+.UIled.on {
+    background-color: rgb(57, 215, 52);
+}
+
+.UIElement {
+    position: absolute;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 40px;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 10px;
+    outline: 0;
+    min-width: 40px;
+    min-height: 40px;
+    padding: 5px;
+}
+.UIElement:hover {
+    outline: 1px solid rgba(0, 0, 0, 0.428);
+}
+.UIElement:hover .UIElement__caret {
+    visibility: visible;
+    cursor: pointer;
+}
+.UIElement__name {
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 1em;
+    height: 20px;
+    margin: 3px;
+}
+.UIElement__id {
+    font-size: 1em;
+    margin: 5px;
+    background-color: rgba(0, 0, 0, 0);
+    text-align: center;
+}
+.UIElement__caret {
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 6px;
+    right: 6px;
+    border-top: 4px solid;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+    visibility: hidden;
+    cursor: pointer;
+}
+.UIElement__menu {
+    background-color: rgba(255, 255, 255, 0.558);
+    position: absolute;
+    top: 5px;
+    min-height: 10px;
+    display: inline-flex;
+    flex-direction: column;
+    visibility: hidden;
+}
+.UIElement__menu.shown {
+    visibility: visible;
+}
+.UIElement__menu__elem {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.5em;
+    background-color: rgba(255, 255, 255, 0.558);
+    padding: 5px;
+    display: inline-block;
+    white-space: nowrap;
+}
+.UIElement__menu__elem:hover {
+    background-color: rgb(208, 208, 208);
+    cursor: pointer;
+}
+
+.generator-button {
+    position: absolute;
+    padding: 10px;
+    top: 0;
+    right: 0;
+    background-color: rgb(159, 159, 159);
+    cursor: pointer;
+}
+.generator-button:hover {
+    background-color: rgb(123, 123, 123);
+}
+.generator-button:active {
+    background-color: rgb(96, 96, 96);
+}
+
+.widget-adder {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.widget-adder__button {
+    position: relative;
+    padding: 10px;
+    display: inline-block;
+    top: 0;
+    right: 0;
+    background-color: rgb(159, 159, 159);
+    cursor: pointer;
+}
+.widget-adder__button:hover {
+    background-color: rgb(123, 123, 123);
+}
+.widget-adder__button:active {
+    background-color: rgb(96, 96, 96);
+}
+.widget-adder__menu {
+    position: absolute;
+    display: none;
+    min-width: 200px;
+    min-height: 100px;
+    background-color: rgba(234, 234, 234, 0.668);
+    top: 100%;
+    right: 0;
+}
+.widget-adder__menu.shown {
+    display: flex;
+}
+.widget-adder__menu__elem {
+    padding: 5px;
+    margin: 3px;
+    background-color: rgba(182, 182, 182, 0.668);
+}
+.widget-adder__menu__elem:hover {
+    background-color: rgba(137, 137, 137, 0.668);
+    cursor: pointer;
+}
+.widget-adder__menu__elem:active {
+    background-color: rgb(100, 100, 100);
+} /*# sourceMappingURL=styles.css.map */

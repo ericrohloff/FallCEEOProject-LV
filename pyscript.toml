@@ -2,6 +2,5 @@ terminal = true
 docked = true
 
 packages = ["matplotlib"]
-
 [[fetch]]
-files = ['widgets.py']
+files = ['widgets.py', 'UITracker.py', 'plotter.py', 'matplot_test.py']
