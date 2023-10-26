@@ -3,7 +3,7 @@ from pyodide.ffi import create_proxy
 from pyscript import when
 import heapq
 from abc import ABC, abstractmethod
-
+from storeInfo import *
 
 class UIElement(ABC):
     # These need to be overridden
@@ -41,6 +41,9 @@ class UIElement(ABC):
 
         # track widget in class attributes
         s._trackNewWidget()
+        storeInfo.sendReceive("hello", "there")
+
+
 
     def _trackNewWidget(s):
         # should be called after new widget is created in subclass to properly give
@@ -222,8 +225,14 @@ class LEDWidget(UIElement):
     def turnOn(s):
         s.led.classList.add("on")
 
+        #tell local storage that the LED is on
+        storeInfo.LEDStoreInfo("on")
+
     def turnOff(s):
         s.led.classList.remove("on")
+
+        #tell local storage that the LED is off
+        storeInfo.LEDStoreInfo("off")
 
     def toggle(s):
         s.led.classList.toggle("on")

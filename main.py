@@ -3,6 +3,7 @@ from pyodide.ffi import create_proxy
 from pyscript import when
 from widgets import *
 from UITracker import UITracker
+from storeInfo import *
 
 tracker = UITracker([buttonWidget, LEDWidget])
 
