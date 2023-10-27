@@ -246,6 +246,27 @@ class LEDWidget(UIElement):
         return menuElem
 
 
+class plotterWidget(UIElement):
+    widgets = []
+    availableIndexes = []
+    numWidgets = 0
+
+    def __init__(s, initX, initY):
+        s.index = None
+        s.element = None
+        super().__init__(initX, initY)
+
+        # make plotter
+        s.plotter = js.document.createElement("div")
+        s.plotter.classList.add("UIplotter")
+        s.element.appendChild(s.plotter)
+
+        # show widget number
+        idTag = js.document.createElement("div")
+        idTag.classList.add("UIElement__id")
+        idTag.innerText = f"Plotter {s.index}"
+        s.element.appendChild(idTag)
+
 # TODO:
 # make it so that when a new event listener is assigned, the old one is removed
 # make text widget

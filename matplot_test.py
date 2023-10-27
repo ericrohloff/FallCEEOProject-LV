@@ -1,18 +1,15 @@
 import matplotlib.pyplot as plt
-import js
-from js import document, console
-from widgets import UIElement
-from pyodide.ffi import create_proxy
-from pyodide.ffi.wrappers import add_event_listener
 from pyscript import display
+import js
+from js import document
 
 
 class InteractiveGraph:
     def __init__(self):
         # Create a figure and axis
         self.fig, self.ax = plt.subplots()
-        self.points = []
         self.fig.set_size_inches(3, 2)
+        self.points = []
 
     def set_limits(self, xlim, ylim):
         # Set axis limits
@@ -39,26 +36,29 @@ class InteractiveGraph:
             self.ax.plot(x, y, 'o', label='Points')
 
     def show_graph(self):
-        # Show the graph
+        # Clear the previous plot, if it exists
+        self.clear_graph()
         self.plot_points()
-        display(self.fig, target='test')
+        display(self.fig, target='plot')
 
+    def clear_graph(self):
+        # Clear the 'plot' div by setting its innerHTML to an empty string
+        plot_div = js.document.getElementById('plot')
+        if plot_div is not None:
+            plot_div.innerHTML = ''
 
-## TEST CODE ##
+    def clear_data(self):
+        # Clear the data points from the graph
+        self.points = []
+        js.console.log(self.points)
 
-# from matplot_test import InteractiveGraph
-
-# graph = InteractiveGraph()
-# graph.set_limits((0, 10), (0, 10))
-# graph.set_labels('X-axis', 'Y-axis')
-# graph.set_title('Empty Graph')
-
-# # Add points
-# graph.add_point(3, 5)
-# graph.add_point(6, 8)
-
-# # Change the title
-# graph.set_title('Graph with Points')
-
-# # Show the graph with points
-# graph.show_graph()
+    def adjust_bounds(self, margin=0.1):
+        # Automatically adjust the bounds of the graph based on data points
+        if self.points:
+            x, y = zip(*self.points)
+            x_min, x_max = min(x), max(x)
+            y_min, y_max = min(y), max(y)
+            x_margin = (x_max - x_min) * margin
+            y_margin = (y_max - y_min) * margin
+            self.set_limits((x_min - x_margin, x_max + x_margin),
+                            (y_min - y_margin, y_max + y_margin))

@@ -245,6 +245,12 @@ body {
     background-color: #219d54; /* Darker green on hover */
 }
 
+#clear_button {
+    position: absolute;
+    bottom: 5px;
+    align-items: center;
+}
+
 body {
     margin: 0;
     padding: 0;

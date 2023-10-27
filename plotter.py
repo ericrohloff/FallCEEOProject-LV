@@ -46,6 +46,7 @@ def generator(event):
     title = title.value
     graph.add_point(x, y)
     graph.set_title(title)
+    graph.clear_graph()
     graph.show_graph()
 
 
@@ -57,7 +58,16 @@ def addpoint(event):
     graph.add_point(x, y)
 
 
+def clear(event):
+    graph.clear_graph()
+    graph.set_title("Empty Graph")
+    graph.clear_data()
+    graph.show_graph()
+
+
 generate = js.document.getElementById("generate")
 addP = js.document.getElementById("init")
+clear_button = js.document.getElementById("clear")
 add_event_listener(generate, 'click', generator)
 add_event_listener(addP, 'click', addpoint)
+add_event_listener(clear_button, 'click', clear)
