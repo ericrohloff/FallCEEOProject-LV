@@ -40,6 +40,8 @@
       <button id="send">Send</button>
       <textarea id="messages"></textarea>
       <script>
+        import widgets from pyscript;
+        
         (function() {
           const sendBtn = document.querySelector('#send');
           const messages = document.querySelector('#messages');
@@ -48,6 +50,9 @@
           let ws;
       
           function showMessage(message) {
+            if (message == "on") {
+              
+            }
             messages.textContent += `\n\n${message}`;
             messages.scrollTop = messages.scrollHeight;
             messageBox.value = '';

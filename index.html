@@ -45,19 +45,73 @@
         <!--button reuns myFunction()-->
        <input type="button" name="R4" value="Turn on LED" onclick="myFunction()"></td>
       </tr>
+      <div>
+      <!--Text box and button for messages to the server-->
+      <pre id="messages" style="height: 400px; overflow: scroll"></pre>
+      <input type="text" id="messageBox" placeholder="Type your message here" style="display: block; width: 100%; margin-bottom: 10px; padding: 10px;" />
+      <button id="send" title="Send Message!" style="width: 100%; height: 30px;">Send Message</button>
       <script>
         function myFunction() {
-          document.write("hi");
-          elem = win1.getElementById("LED00");
-          win1.LEDWidget.turnOn();
-          elem.turnOn();
-          document.write(elem.innerText)
-          document.write();
+        //   document.write("hi");
+        //   elem = win1.getElementById("LED00");
+            elem = win1.LEDWidget.widgets[0];
+            elem.turnOn();
+        //   document.write(elem.innerText)
+        //   document.write();
           
-          document.write("hi");
+        //   document.write("hi");
         }
-        myFunction();
+        // myFunction();
+        // import widgets from pyscript;
+        // import UITracker from pyscript;
+
+        // const tracker = new UITracker();
+
+        (function() {
+          const sendBtn = document.querySelector('#send');
+          const messages = document.querySelector('#messages');
+          const messageBox = document.querySelector('#messageBox');
+      
+          let ws;
+      
+          function showMessage(message) {
+            messages.textContent += `\n\n${message}`;
+            messages.scrollTop = messages.scrollHeight;
+            messageBox.value = '';
+          }
+      
+          function init() {
+
+
+            if (ws) {
+              ws.onerror = ws.onopen = ws.onclose = null;
+              ws.close();
+            }
+      
+            ws = new WebSocket('ws://localhost:8080');
+            ws.onopen = () => {
+              console.log('Connection opened!');
+            }
+            ws.onmessage = ({ data }) => showMessage(data);
+            ws.onclose = function() {
+              ws = null;
+            }
+          }
+      
+          sendBtn.onclick = function() {
+            if (!ws) {
+              showMessage("No WebSocket connection :(");
+              return ;
+            }
+      
+            ws.send(messageBox.value);
+            showMessage(messageBox.value);
+          }
+      
+          init();
+        })();
       </script>
+      </div>
       <div data-page="code-panel" class="pageContent__content">
         <py-repl></py-repl>
       </div>
