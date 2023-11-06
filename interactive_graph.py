@@ -1,18 +1,24 @@
 import matplotlib.pyplot as plt
+import requests
 from pyscript import display
-import js
 from js import document
+import js
 
 
 class InteractiveGraph:
     def __init__(self):
         # Create a figure and axis
         self.fig, self.ax = plt.subplots()
-        self.fig.set_size_inches(3, 2)
+        self.fig.set_size_inches(3, 2)  # Adjust the figure size
         self.points = []
 
     def set_limits(self, xlim, ylim):
         # Set axis limits
+        if xlim[0] == xlim[1]:
+            # Adjust the limits to avoid singularity
+            xlim = (xlim[0] - 1, xlim[1] + 1)
+        if ylim[0] == ylim[1]:
+            ylim = (ylim[0] - 1, ylim[1] + 1)
         self.ax.set_xlim(xlim)
         self.ax.set_ylim(ylim)
 
@@ -25,34 +31,35 @@ class InteractiveGraph:
         # Set the title
         self.ax.set_title(title)
 
-    def add_point(self, x, y):
-        # Add a point to the graph
-        self.points.append((x, y))
-
     def plot_points(self):
         # Plot the points on the graph
         if self.points:
             x, y = zip(*self.points)
             self.ax.plot(x, y, 'o', label='Points')
+            self.adjust_bounds(0.1)
+            self.show_graph()
+
+    def add_point(self, x, y):
+        # Add a point to the graph
+        self.points.append((x, y))
+        self.plot_points()
 
     def show_graph(self):
         # Clear the previous plot, if it exists
-        self.clear_graph()
-        self.plot_points()
+        plot = document.getElementById('plot')
+        if plot is not None:
+            plot.innerHTML = ''
         display(self.fig, target='plot')
 
     def clear_graph(self):
-        # Clear the 'plot' div by setting its innerHTML to an empty string
-        plot_div = js.document.getElementById('plot')
-        if plot_div is not None:
-            plot_div.innerHTML = ''
+        plot = document.getElementById('plot')
+        if plot is not None:
+            plot.innerHTML = ''
+        self.ax.clear()  # Clear the existing plot
+        self.points = []  # Clear data
+        self.set_title("Empty Graph")
 
-    def clear_data(self):
-        # Clear the data points from the graph
-        self.points = []
-        js.console.log(self.points)
-
-    def adjust_bounds(self, margin=0.1):
+    def adjust_bounds(self, margin):
         # Automatically adjust the bounds of the graph based on data points
         if self.points:
             x, y = zip(*self.points)
@@ -62,3 +69,15 @@ class InteractiveGraph:
             y_margin = (y_max - y_min) * margin
             self.set_limits((x_min - x_margin, x_max + x_margin),
                             (y_min - y_margin, y_max + y_margin))
+
+    def zoom_out(self, margin):
+        # Zoom out by adjusting the bounds with a larger margin
+        self.adjust_bounds(margin)
+        self.show_graph()
+        js.console.log("zoom out")
+
+    def zoom_in(self, margin):
+        # Zoom in by adjusting the bounds with a smaller margin
+        self.adjust_bounds(-margin)
+        self.show_graph()  # Pass a negative margin to zoom in
+        js.console.log("zoom in")

@@ -18,8 +18,8 @@
         <py-config src="./pyscript.toml"></py-config>
         <py-script src="./main.py"></py-script>
         <py-script src="./widgets.py"></py-script>
-        <py-script src="./plotter.py"></py-script>
-        <py-script src="./matplot_test.py"></py-script>
+        <py-script src="./graph_setup.py"></py-script>
+        <py-script src="./interactive_graph.py"></py-script>
 
         <div class="headBar">
             <div
@@ -63,21 +63,18 @@
                     <div class="matplotter__title" id="title">
                         <input type="text" placeholder="Enter Title" />
                     </div>
-                    <div class="matplotter__points" id="x">
-                        <input type="text" placeholder="Enter Points" />
-                    </div>
-                    <div class="matplotter__points" id="y">
-                        <input type="text" placeholder="Enter Points" />
-                    </div>
-                    <div class="matplotter__button">
-                        <button class="generate" id="init">Add Point</button>
-                    </div>
                     <div class="matplotter__button">
                         <button class="generate" id="generate">Plot</button>
                     </div>
                     <div id="plot"></div>
                     <div class="matplotter__button" id="clear_button">
                         <button class="generate" id="clear">Clear</button>
+                    </div>
+                    <div class="matplotter__button" id="ZoomIn">
+                        <button class="generate" id="in">Zoom In</button>
+                    </div>
+                    <div class="matplotter__button" id="ZoomOut">
+                        <button class="generate" id="out">Zoom Out</button>
                     </div>
                 </div>
                 <div class="UIElement">
