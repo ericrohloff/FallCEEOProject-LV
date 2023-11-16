@@ -1,5 +1,6 @@
 from interactive_graph import InteractiveGraph
 import js
+import time
 from pyodide.ffi.wrappers import add_event_listener
 
 graph = InteractiveGraph()
@@ -31,11 +32,22 @@ def zoom_in(event):
     graph.show_graph()
 
 
+def plot_button(event):
+    graph.plot_button()
+
+
+def plot_zeros(event):
+    graph.plot_zeros()
+
+
 # Event Listener Setup
 clear_button = js.document.getElementById("clear")
 zoom_out_button = js.document.getElementById("out")
 zoom_in_button = js.document.getElementById("in")
+button0 = js.document.getElementById("button0")
 add_event_listener(clear_button, 'click', clear)
 add_event_listener(js.document.getElementById("title"), 'input', title)
 add_event_listener(zoom_out_button, 'click', zoom_out)
 add_event_listener(zoom_in_button, 'click', zoom_in)
+# add_event_listener(button0, 'mousedown', plot_button)
+# add_event_listener(button0, 'mouseup', plot_zeros)

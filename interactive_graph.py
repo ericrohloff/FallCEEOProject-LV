@@ -3,6 +3,8 @@ import requests
 from pyscript import display
 from js import document
 import js
+import time
+from pyodide.ffi.wrappers import add_event_listener
 
 
 class InteractiveGraph:
@@ -11,6 +13,7 @@ class InteractiveGraph:
         self.fig, self.ax = plt.subplots()
         self.fig.set_size_inches(3, 2)  # Adjust the figure size
         self.points = []
+        self.time = time.time()
 
     def set_limits(self, xlim, ylim):
         # Set axis limits
@@ -35,7 +38,8 @@ class InteractiveGraph:
         # Plot the points on the graph
         if self.points:
             x, y = zip(*self.points)
-            self.ax.plot(x, y, 'o', label='Points')
+            self.ax.plot(x, y, color='blue', linestyle='-',
+                         linewidth=2, label='Line')
             self.adjust_bounds(0.1)
             self.show_graph()
 
@@ -81,3 +85,28 @@ class InteractiveGraph:
         self.adjust_bounds(-margin)
         self.show_graph()  # Pass a negative margin to zoom in
         js.console.log("zoom in")
+
+    def plot_button(self, event):
+        y = 1.0
+        x = time.time() - self.time
+        z = 0.0
+        self.add_point(x, z)
+        self.add_point(x, y)
+        self.show_graph()
+
+    def plot_zeros(self, event):
+        y = 0.0
+        x = time.time() - self.time
+        z = 1.0
+        self.add_point(x, z)
+        self.add_point(x, y)
+        self.show_graph()
+
+    def button_listen(self, id):
+        button = document.getElementById(id)
+        add_event_listener(button, 'mousedown', self.plot_button)
+        add_event_listener(button, 'mouseup', self.plot_zeros)
+
+# While loop
+# Conenct to Serial
+# Accelerometer
