@@ -1,6 +1,7 @@
 terminal = true
 docked = true
 
-packages = ["matplotlib", "requests"]
+packages = ["matplotlib", "requests", "opencv-python", "numpy","pillow"]
 [[fetch]]
-files = ['widgets.py', 'UITracker.py', 'graph_setup.py', 'interactive_graph.py']
+files = ['widgets.py', 'UITracker.py', 'graph_setup.py', 'interactive_graph.py',
+        'serial.py', 'serialComms.py']

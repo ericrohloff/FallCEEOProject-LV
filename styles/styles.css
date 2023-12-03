@@ -273,6 +273,31 @@ body {
     align-items: center;
 }
 
+/* Serial Button Styles */
+
+.serial_button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid #3498db; /* Border color */
+    color: #3498db; /* Text color */
+    background-color: #ffffff; /* Background color */
+    border-radius: 4px;
+    position: absolute;
+    top: 200px;
+    left: 100px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.serial_button:hover {
+    background-color: #3498db;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
 body {
     margin: 0;
     padding: 0;

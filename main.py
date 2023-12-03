@@ -3,7 +3,11 @@ from pyodide.ffi import create_proxy
 from pyscript import when
 from widgets import *
 from UITracker import UITracker
+import serial
 
+
+serial_button = js.document.querySelector("#start-serial")
+serial.SerialConsole("console")
 tracker = UITracker([buttonWidget, LEDWidget])
 
 # temp function for testing

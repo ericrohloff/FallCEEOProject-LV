@@ -22,8 +22,8 @@
 
 # EXAMPLE 2: Use InteractiveGraph class to plot button state
 
-import time
-import numpy as np
-from interactive_graph import InteractiveGraph
+# import time
+# import numpy as np
+# from interactive_graph import InteractiveGraph
 
-graph.button_listen("button0")
+# graph.button_listen("button0")
