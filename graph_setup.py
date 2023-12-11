@@ -40,14 +40,25 @@ def plot_zeros(event):
     graph.plot_zeros()
 
 
+def spawn_graph(event):
+    id = js.document.getElementById("test")
+    if id.style.visibility == "visible":
+        id.style.visibility = "hidden"
+    else:
+        id.style.visibility = "visible"
+
+
 # Event Listener Setup
 clear_button = js.document.getElementById("clear")
 zoom_out_button = js.document.getElementById("out")
 zoom_in_button = js.document.getElementById("in")
 button0 = js.document.getElementById("button0")
+graph_obj = js.document.getElementById("spawn_graph")
 add_event_listener(clear_button, 'click', clear)
 add_event_listener(js.document.getElementById("title"), 'input', title)
 add_event_listener(zoom_out_button, 'click', zoom_out)
 add_event_listener(zoom_in_button, 'click', zoom_in)
+add_event_listener(graph_obj, 'click', spawn_graph)
+
 # add_event_listener(button0, 'mousedown', plot_button)
 # add_event_listener(button0, 'mouseup', plot_zeros)

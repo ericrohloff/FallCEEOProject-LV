@@ -20,6 +20,9 @@
         <py-script src="./widgets.py"></py-script>
         <py-script src="./graph_setup.py"></py-script>
         <py-script src="./interactive_graph.py"></py-script>
+        <py-script src="./serial.py"></py-script>
+        <py-script src="./serialComms.py"></py-script>
+        <py-script src="./serial_setup.py"></py-script>
 
         <div class="headBar">
             <div
@@ -37,6 +40,10 @@
             >
                 Serial Panel
             </div>
+            <button id="serial_button" py-click="connecter()">
+                Serial Connection
+            </button>
+            <button id="spawn_graph">Graph</button>
         </div>
         <div id="pageContent">
             <div data-page="code-panel" class="pageContent__content">
@@ -77,9 +84,7 @@
                         <button class="generate" id="out">Zoom Out</button>
                     </div>
                 </div>
-                <button class="serial_button" py-click="serial.connect()">
-                    Serial Button
-                </button>
+                <div id="console"></div>
                 <div class="UIElement">
                     <i class="UIElement__caret"
                         ><div class="UIElement__menu">

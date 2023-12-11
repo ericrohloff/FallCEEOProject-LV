@@ -6,6 +6,7 @@ import time
 import asyncio
 from pyscript import Element
 
+
 # Utility function for converting py dicts to JS objects
 
 
@@ -59,6 +60,7 @@ def REPL_Read():
 
 
 async def connect():
+    js.console.log('connecting')
     await s.ask()
     asyncio.create_task(s.startReading())
     s.CtrlC()
